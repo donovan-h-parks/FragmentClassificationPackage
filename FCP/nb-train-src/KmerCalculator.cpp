@@ -110,7 +110,7 @@ void KmerCalculator::extractForwardKmers(SeqInfo& seqInfo, std::vector<uint>& km
 	int indexOfInvalidCharacter = -1;
 	for(ulong i = 0; i < m_wordLength; ++i)
 	{
-		byte value = m_ntValues[seq[i]];
+		byte value = m_ntValues[(byte)seq[i]];
 		if(value == INVALID_NT_CHARACTER)
 			indexOfInvalidCharacter = m_wordLength;
 
@@ -130,10 +130,10 @@ void KmerCalculator::extractForwardKmers(SeqInfo& seqInfo, std::vector<uint>& km
 	for(ulong i = m_wordLength; i < seqInfo.length; ++i)
 	{
 		// subtract value for nt leaving window
-		word -= m_topMultiplier * m_ntValues[seq[i - m_wordLength]];
+		word -= m_topMultiplier * m_ntValues[(byte)seq[i - m_wordLength]];
 
 		// add value of nt entering window
-		byte value = m_ntValues[seq[i]];
+		byte value = m_ntValues[(byte)seq[i]];
 
 		if(value == INVALID_NT_CHARACTER)
 			indexOfInvalidCharacter = m_wordLength;
@@ -163,8 +163,8 @@ void KmerCalculator::extractKmers(SeqInfo& seqInfo, std::vector<uint>& kmerValue
 	seqInfo.validKmers = 0;
 	for(ulong i = 0; i < m_wordLength; ++i)
 	{
-		byte value = m_ntValues[seq[i]];
-		byte reverseValue = m_ntReverseValues[seq[m_wordLength-i-1]];
+		byte value = m_ntValues[(byte)seq[i]];
+		byte reverseValue = m_ntReverseValues[(byte)seq[m_wordLength-i-1]];
 
 		if(value == INVALID_NT_CHARACTER)
 			indexOfInvalidCharacter = m_wordLength;
@@ -188,12 +188,12 @@ void KmerCalculator::extractKmers(SeqInfo& seqInfo, std::vector<uint>& kmerValue
 	for(ulong i = m_wordLength; i < seqInfo.length; ++i)
 	{
 		// subtract value for nt leaving window
-		word -= m_topMultiplier * m_ntValues[seq[i - m_wordLength]];
-		reverseWord -= m_ntReverseValues[seq[i - m_wordLength]];
+		word -= m_topMultiplier * m_ntValues[(byte)seq[i - m_wordLength]];
+		reverseWord -= m_ntReverseValues[(byte)seq[i - m_wordLength]];
 		
 		// add value of nt entering window
-		byte value = m_ntValues[seq[i]];
-		byte reverseValue = m_ntReverseValues[seq[i]];
+		byte value = m_ntValues[(byte)seq[i]];
+		byte reverseValue = m_ntReverseValues[(byte)seq[i]];
 
 		if(value == INVALID_NT_CHARACTER)
 			indexOfInvalidCharacter = m_wordLength;

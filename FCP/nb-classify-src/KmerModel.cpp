@@ -46,7 +46,10 @@ KmerModel::~KmerModel()
 bool KmerModel::constructModel(SeqInfo& seqInfo)
 {
 	if(seqInfo.length < m_wordLength)
+	{
+		std::cerr << "Sequence is shorter then k-mer length: " << seqInfo.seqId << "." << std::endl;
 		return false;
+	}
 
 	// ensure all sequences are from the same strain
 	if(m_modelInfo.taxonomy.strain == "")
@@ -59,7 +62,11 @@ bool KmerModel::constructModel(SeqInfo& seqInfo)
 	else
 	{
 		if(seqInfo.taxonomy.strain != m_modelInfo.taxonomy.strain)
+		{
+			std::cerr << "Sequence " << seqInfo.seqId << " is from strain " << seqInfo.taxonomy.strain; 
+			std::cerr << ", expecting sequences from strain " << m_modelInfo.taxonomy.strain << "." << std::endl;
 			return false;
+		}
 	}
 
 	// calculate kmer profile for sequence

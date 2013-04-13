@@ -24,7 +24,6 @@
 #include "FastaIO.hpp"
 #include "KmerCalculator.hpp"
 #include "KmerModel.hpp"
-#include "TaxonomyIO.hpp"
 #include "Utils.hpp"
 
 struct Parameters
@@ -36,7 +35,9 @@ struct Parameters
 
 void help()
 {
-	std::cout << "Usage: [options] -q <query-file> -m <model-file> -r <results-file>" << std::endl;
+	std::cout << "Naive Bayes Classification v1.0.4" << std::endl;
+	std::cout << std::endl;
+	std::cout << "  Usage: [options] -q <query-file> -m <model-file> -r <results-file>" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Required parameters:" << std::endl;
 	std::cout << "  <query-file>    Multi-FASTA file containing query fragments to classify." << std::endl;
@@ -49,13 +50,13 @@ void help()
 	std::cout << "  --contact     Print contact information." << std::endl;
 	std::cout << "  -b <integer>  Number of fragments to classify at a time (default = 50000)." << std::endl;	
 	std::cout << "  -t <integer>  Log likelihood of the top T models will be returned. If you" << std::endl;  
-	std::cout << "                  wish to havethe log likelihood of all models in the" << std::endl;
+	std::cout << "                  wish to have the log likelihood of all models in the" << std::endl;
 	std::cout << "                  results file set T = 0 (default = 0)." << std::endl;
 	std::cout << "  -v <integer>  Level of output information (default = 1)." << std::endl;	
 	std::cout << "  -e <string>   Extension to add to temporary files (default = txt)." << std::endl;	
 	std::cout << std::endl;
 	std::cout << "Typical usage:" << std::endl;
-	std::cout << "  nb-classify -q test.fasta -m ./models/models.txt -r nb_results.txt" << std::endl << std::endl;
+	std::cout << "  nb-classify -q test.fasta -m models.txt -r nb_results.txt" << std::endl << std::endl;
 }
 
 bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
@@ -155,12 +156,12 @@ int main(int argc, char* argv[])
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "nb-classify v1.0 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Classify v1.0.4 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
 	{
-		std::cout << "Comments, suggestions, and bug reports can be sent to Rob Beiko (beiko@cs.dal.ca)." << std::endl;
+		std::cout << "Comments, suggestions, and bug reports can be sent to Donovan Parks (donovan.parks@gmail.com)." << std::endl;
 		return 0;
 	}
 	else if(parameters.queryFile.empty() || parameters.modelFile.empty() || parameters.resultsFile.empty())

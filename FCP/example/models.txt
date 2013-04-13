@@ -1,0 +1,2 @@
+./models/genome1.txt
+./models/genome2.txt

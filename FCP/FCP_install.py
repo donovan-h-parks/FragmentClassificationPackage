@@ -338,7 +338,7 @@ def BuildNaiveBayesModels():
 	# build stain-level models
 	if platform.system() == 'Windows':
 		print 'Building genome-level models...'
-		os.system('nb-train-windows.exe -n 10 -t ./taxonomy.txt -s ./training/sequences.txt -m ./models/genomes/')
+		os.system('nb-train-windows.exe -n 10 -s ./training/sequences.txt -m ./models/genomes/')
 	else: # assume the system can build the executable from source
 		print 'Compiling nb-train...'
 		os.chdir('./nb-train-src')
@@ -353,7 +353,7 @@ def BuildNaiveBayesModels():
 		os.system('cp ./nb-classify-src/nb-classify .')
 		
 		print 'Building genome-level models...'
-		os.system('./nb-train -n 10 -t ./taxonomy.txt -s ./training/sequences.txt -m ./models/genomes/')
+		os.system('./nb-train -n 10 -s ./training/sequences.txt -m ./models/genomes/')
 
 	# create model file for classifying query fragments
 	modelFile = open('./models/models.txt', 'w')
@@ -365,9 +365,9 @@ def BuildNaiveBayesModels():
 genomeFile = 'all.gbk.tar.gz'
 taxonomyDump = 'taxdump.tar.gz'
 
-print 'FCP_install v1.0.3'
+print 'FCP_install v1.0.4'
 print ''
-print 'This script is maintained by Donovan Parks, Norm MacDonald, and Rob Beiko (beiko@cs.dal.ca).'
+print 'This script is maintained by Donovan Parks (donovan.parks@gmail.com), Norm MacDonald, and Rob Beiko.'
 print ''
 print 'Changes to the NCBI FTP site or NCBI file formats may break this script.'
 print 'Please contact us if this script is broken and we will try to resolve the issue.'

@@ -27,7 +27,7 @@
 class FastaIO 
 {
 public:
-	static const long BUFFER_SIZE = 32 * 1024 * 1024;	// 32 Mbyte buffer
+	static const long BUFFER_SIZE = 100 * 1024 * 1024;	// 100 Mbyte buffer
 
 public:
 	FastaIO();

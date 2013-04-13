@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nb-train", "nb-train\nb-train.vcxproj", "{D22662C1-A5BB-4655-8371-330F6DDF818A}"
-EndProject
+# Visual C++ Express 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nb-classify", "nb-classify\nb-classify.vcxproj", "{F43F2D82-8DAC-4E29-8491-D82E1CC6E50D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nb-train", "nb-train\nb-train.vcxproj", "{D22662C1-A5BB-4655-8371-330F6DDF818A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nb-null-model", "nb-null-model\nb-null-model.vcxproj", "{43091CDC-341F-4F0B-87E9-62D6B3F5FDDB}"
 EndProject
@@ -13,14 +13,14 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Debug|Win32.Build.0 = Debug|Win32
-		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Release|Win32.ActiveCfg = Release|Win32
-		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Release|Win32.Build.0 = Release|Win32
 		{F43F2D82-8DAC-4E29-8491-D82E1CC6E50D}.Debug|Win32.ActiveCfg = Debug|Win32
 		{F43F2D82-8DAC-4E29-8491-D82E1CC6E50D}.Debug|Win32.Build.0 = Debug|Win32
 		{F43F2D82-8DAC-4E29-8491-D82E1CC6E50D}.Release|Win32.ActiveCfg = Release|Win32
 		{F43F2D82-8DAC-4E29-8491-D82E1CC6E50D}.Release|Win32.Build.0 = Release|Win32
+		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Debug|Win32.Build.0 = Debug|Win32
+		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Release|Win32.ActiveCfg = Release|Win32
+		{D22662C1-A5BB-4655-8371-330F6DDF818A}.Release|Win32.Build.0 = Release|Win32
 		{43091CDC-341F-4F0B-87E9-62D6B3F5FDDB}.Debug|Win32.ActiveCfg = Debug|Win32
 		{43091CDC-341F-4F0B-87E9-62D6B3F5FDDB}.Debug|Win32.Build.0 = Debug|Win32
 		{43091CDC-341F-4F0B-87E9-62D6B3F5FDDB}.Release|Win32.ActiveCfg = Release|Win32

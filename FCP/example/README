@@ -1,0 +1,22 @@
+The files in this directory show how to build naive Bayes models
+independent of the general FCP framework. This can be useful if
+you are interested in only a specific set of genomes. Although
+designed for use with bacterial and archaeal genomes available at
+NCBI, the software can be applied to any genomes of interest.
+
+You can train these example models with:
+nb-train -n 10 -s sequences.txt -m ./models/
+
+A model is build for each FASTA file specified in the sequences.txt 
+file (genome1.fna and genome2.fna in this example). A FASTA files 
+such as genome1.fna may consists of multiple sequences. 
+
+The above command results in two models being placed in the models folder:
+genome1.txt
+genome2.txt
+
+You can classify the sequences in query.fna using:
+nb-classify -q query.fna -m models.txt -r nb_results.txt
+
+The model.txt file simply provides a list of models to consider.
+

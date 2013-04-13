@@ -23,13 +23,12 @@
 
 #include "FastaIO.hpp"
 #include "KmerModel.hpp"
-#include "TaxonomyIO.hpp"
 #include "Utils.hpp"
 
 struct Parameters
 {
 	bool bShowHelp, bShowVersion, bShowContactInfo;
-	std::string taxonomyFile, sequenceFile, outputDir;
+	std::string sequenceFile, outputDir;
 	int kmerSize;
 };
 
@@ -37,10 +36,9 @@ void help()
 {
 	std::cout << "Naive Bayes Train v1.0.4" << std::endl;
 	std::cout << std::endl;
-	std::cout << "Usage: [options] -t <taxonomy-file> -s <sequence-file> -m <model-dir>" << std::endl;
+	std::cout << "Usage: [options] -s <sequence-file> -m <model-dir>" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Required parameters:" << std::endl;
-	std::cout << "  <taxonomy-file>  File indicating taxonomic information for each sequence within <sequence-file>." << std::endl;
 	std::cout << "  <sequence-file>  File listing path to each FASTA file for which a model shoud be built." << std::endl;
 	std::cout << "  <model-dir>      Directory to store models." << std::endl;
 	std::cout << std::endl;
@@ -51,7 +49,7 @@ void help()
 	std::cout << "  -n <integer>  Desired oligonucleotide length (default = 10)." << std::endl;
 	std::cout << std::endl;
 	std::cout << "Typical usage:" << std::endl;
-	std::cout << "  nb-train -t ./taxonomy.txt -s ./training/sequences.txt -m ./models/"  << std::endl << std::endl;
+	std::cout << "  nb-train -s sequences.txt -m ./models/"  << std::endl << std::endl;
 }
 
 bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
@@ -69,11 +67,6 @@ bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
 		if(strcmp(argv[p], "-n") == 0)
 		{
 			parameters.kmerSize = atoi(argv[p+1]);
-			p += 2;
-		}
-		else if(strcmp(argv[p], "-t") == 0)
-		{
-			parameters.taxonomyFile = argv[p+1];
 			p += 2;
 		}
 		else if(strcmp(argv[p], "-s") == 0)
@@ -129,7 +122,7 @@ int main(int argc, char* argv[])
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "nb-train v1.1 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Train v1.0.4 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
@@ -137,26 +130,14 @@ int main(int argc, char* argv[])
 		std::cout << "Comments, suggestions, and bug reports can be sent to Donovan Parks (donovan.parks@gmail.com)." << std::endl;
 		return 0;
 	}
-	else if(parameters.taxonomyFile.empty() || parameters.outputDir.empty() || parameters.sequenceFile.empty())
+	else if(parameters.outputDir.empty() || parameters.sequenceFile.empty())
 	{
-		std::cout << "Must specify taxonomy file (-t), sequence file (-s), and output directory (-m)." << std::endl << std::endl;
+		std::cout << "Must specify sequence file (-s) and output directory (-m)." << std::endl << std::endl;
 		help();
 		return 0;
 	}
 
-	// read file indicating taxonomic classification of each sequence
-	std::cout << "Reading taxonomy file... " << std::endl;
-	TaxonomyIO taxonomyIO;
-	if(!taxonomyIO.open(parameters.taxonomyFile))
-	{
-		std::cerr << "Error opening taxonomy file: " << parameters.taxonomyFile << std::endl;
-		return 0;
-	}
-
-	uint numStrains = taxonomyIO.numCategories(STRAIN_RANK);
-	std::cout << "  Number of strains: " << numStrains << std::endl << std::endl;
-
-	// train model for each strain
+	// train model for each sequence in the sequence file
 	std::cout << "Training models..." << std::endl;
 	uint numModels = 0;
 	std::ifstream modelStream(parameters.sequenceFile.c_str(), std::ios::in);
@@ -195,13 +176,6 @@ int main(int argc, char* argv[])
 			bool bNextSeq = fastaIO.nextSeq(seqInfo);
 			if(!bNextSeq)
 				break;
-
-			bool bOK = taxonomyIO.taxonomy(seqInfo.seqId, modelName, seqInfo.taxonomy);
-			if(!bOK)
-			{
-				std::cerr << "Error building model." << std::endl;
-				return -1;
-			}
 
 			bOK = kmerModel.constructModel(seqInfo);
 			if(!bOK)

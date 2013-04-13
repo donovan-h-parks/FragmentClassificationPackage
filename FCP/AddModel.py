@@ -66,9 +66,9 @@ fout.close()
 # build new model
 print 'Building model for new sequence...'
 if platform.system() == 'Windows':	
-	os.system('nb-train-windows.exe 10 ./taxonomy.txt ./training/__temp__.txt ./models/genomes/')
+	os.system('nb-train-windows.exe 10 -s ./training/__temp__.txt -m ./models/genomes/')
 else: # assume the system can build the executable from source
-	os.system('./nb-train 10 ./taxonomy.txt ./training/__temp__.txt ./models/genomes/')
+	os.system('./nb-train 10 -s ./training/__temp__.txt -m ./models/genomes/')
 	
 # removing temporary sequence file
 os.chdir('..')

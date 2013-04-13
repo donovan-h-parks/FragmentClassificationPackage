@@ -24,7 +24,6 @@
 #include "FastaIO.hpp"
 #include "KmerCalculator.hpp"
 #include "KmerModel.hpp"
-#include "TaxonomyIO.hpp"
 #include "Utils.hpp"
 
 struct Parameters
@@ -57,7 +56,7 @@ void help()
 	std::cout << "  -e <string>   Extension to add to temporary files (default = txt)." << std::endl;	
 	std::cout << std::endl;
 	std::cout << "Typical usage:" << std::endl;
-	std::cout << "  nb-classify -q test.fasta -m ./models/models.txt -r nb_results.txt" << std::endl << std::endl;
+	std::cout << "  nb-classify -q test.fasta -m models.txt -r nb_results.txt" << std::endl << std::endl;
 }
 
 bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
@@ -157,7 +156,7 @@ int main(int argc, char* argv[])
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "nb-classify v1.1 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Classify v1.0.4 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
