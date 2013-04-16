@@ -81,7 +81,7 @@ bool FastaIO::open(const std::string& filename)
 
 	// calculate size of file
 	m_fileStream.seekg(0, std::ios::end);
-	m_fileSize = m_fileStream.tellg();
+	m_fileSize = (ulong)m_fileStream.tellg();
 	m_fileStream.seekg(0, std::ios::beg);
 
 	// allocate memory for reading file

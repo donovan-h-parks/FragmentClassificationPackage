@@ -1,0 +1,1 @@
+../testing/genome1.fna
