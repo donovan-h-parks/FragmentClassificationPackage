@@ -31,7 +31,7 @@ if len(sys.argv) != 7:
 	print '  <blastn-results>  Results of BLASTN classifier.'
 	print '  <nb-results>      Results of NB classifier with T=0.'
 	print '  <E-value>         Ignore hits with an E-value above this threshold.'
-	print '  <percentage>      Use all hits with a bit score with this percentage of the '
+	print '  <percentage>      Use all hits with a bit score within this percentage of the '
 	print '                       hit with the highest bit score to classify a fragment.'
 	print '  <epsilon>         Use all models with a likelihood at most epsilon times smaller'
 	print '                       than the maximum likelihood model to classify a fragment.'

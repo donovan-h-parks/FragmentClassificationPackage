@@ -30,7 +30,7 @@ if len(sys.argv) != 5:
 	print 'Required parameters:'
 	print '  <blastn-results>  Results of BLASTN classifier.'
 	print '  <E-value>         Ignore hits with an E-value above this threshold.'
-	print '  <percentage>      Use all hits with a bit score with this percentage of the '
+	print '  <percentage>      Use all hits with a bit score within this percentage of the '
 	print '                      hit with the highest bit score to classify a fragment.'
 	print '  <results-file>    File to write classification results to.'
 	print ''
