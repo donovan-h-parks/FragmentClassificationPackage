@@ -32,7 +32,7 @@ the bacterial and archaeal genomes is determined. Sequence data
 is than extracted from the Genbank files of each genome and a
 Naive Bayes model built for each genome.
 
-Installation takes around 2 hours, but does not require any 
+Installation takes around 4 hours, but does not require any 
 user interaction. Conservative times for each step are as follows:
 
   1. Download NCBI RefSeq genomes: 3 hours
