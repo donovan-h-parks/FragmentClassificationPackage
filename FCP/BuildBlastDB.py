@@ -1,3 +1,21 @@
+#!/usr/bin/env python
+###############################################################################
+#                                                                             #
+#    This program is free software: you can redistribute it and/or modify     #
+#    it under the terms of the GNU General Public License as published by     #
+#    the Free Software Foundation, either version 3 of the License, or        #
+#    (at your option) any later version.                                      #
+#                                                                             #
+#    This program is distributed in the hope that it will be useful,          #
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #
+#    GNU General Public License for more details.                             #
+#                                                                             #
+#    You should have received a copy of the GNU General Public License        #
+#    along with this program. If not, see <http://www.gnu.org/licenses/>.     #
+#                                                                             #
+###############################################################################
+
 # This script build a BLAST database for all
 # completely sequenced genomes.
 
@@ -44,9 +62,6 @@ print 'Creating BLAST database...'
 os.chdir('./blast_data')
 os.system(dbExeFile + ' -max_file_sz 100GB -in _temp_.txt -dbtype nucl -title BacteriaAndArchaeaGenomes -out BacteriaAndArchaeaGenomesDB')
 
-if platform.system() == 'Windows':
-	os.system('del _temp_.txt')
-else:
-	os.system('rm _temp_.txt')
-	
+os.remove('_temp_.txt')
+
 print 'Done.'
