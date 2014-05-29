@@ -1,9 +1,7 @@
 Fragment Classification Package (FCP)
 =====================================
 
-Classifying short genomic fragments from novel lineages using composition and homology.
-
-Version: 1.0.4
+Classifying genomic fragments from novel lineages using composition and homology.
 
 ## SYSTEM REQUIREMENTS
 
