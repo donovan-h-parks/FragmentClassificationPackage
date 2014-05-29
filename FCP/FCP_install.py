@@ -383,12 +383,10 @@ def BuildNaiveBayesModels():
 genomeFile = 'all.gbk.tar.gz'
 taxonomyDump = 'taxdump.tar.gz'
 
-print 'FCP_install v1.0.4'
+print 'FCP_install v1.0.5'
 print ''
 print 'This script is maintained by Donovan Parks (donovan.parks@gmail.com), Norm MacDonald, and Rob Beiko.'
 print ''
-print 'Changes to the NCBI FTP site or NCBI file formats may break this script.'
-print 'Please contact us if this script is broken and we will try to resolve the issue.'
 
 #***
 for flagi, flag in enumerate(sys.argv):
