@@ -58,7 +58,7 @@ bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
 	parameters.bShowHelp = false;
 	parameters.bShowContactInfo = false;
 	parameters.bShowVersion = false;
-	parameters.kmerSize = 10;
+	parameters.kmerSize = 8;
 
 	// parse parameters
 	int p = 1;
@@ -117,12 +117,12 @@ int main(int argc, char* argv[])
 
 	if(!bParsed || parameters.bShowHelp || argc == 1) 
 	{			
-		help();	
-    return 0;
+		help();
+		return 0;
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "Naive Bayes Train v1.0.4 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Train v1.0.5 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
