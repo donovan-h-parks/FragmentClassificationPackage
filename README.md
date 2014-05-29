@@ -7,7 +7,7 @@ Classifying genomic fragments from novel lineages using composition and homology
 
 * Installation requires ~40GB of disk space.
 * Classification of query fragments takes ~20GB per 1 millions fragments.
-* Python v2.x is required to run the install script. Please note that we,
+* Python v2.x is required to run the install script. Please note that we
   have not tested installation using Python v3.x. Python 2.x comes 
   pre-installed on OS X and most Linux environments. Type 'python' from
   the command prompt to check if python is installed. Python, including
@@ -21,11 +21,11 @@ To install the Fragment Classification Package (FCP), run the FCP_install.py scr
 
     > python FCP_install.py
 
-This script downloads all completely sequenced bacterial and
-archaeal genomes in the NCBI RefSeq database. Due to the size
-of this file (> 7.5GB) it can take over an hour to download.
-Taxonomic information is also obtained by downloading a portion
-of the NCBI Taxonomy database.
+This script downloads all finished bacterial and archaeal
+genomes in the NCBI RefSeq database. Due to the size of
+this file (> 7.5GB) it can take over an hour to download.
+Taxonomic information is also obtained by downloading a 
+portion of the NCBI Taxonomy database.
 
 Once these files are downloaded, the taxonomy of each contig in
 the bacterial and archaeal genomes is determined. Sequence data
