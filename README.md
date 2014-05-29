@@ -74,6 +74,7 @@ RESULTS).
 
 Classification with NB is done using the program nb-classify (nb-classify-windows.exe 
 on Microsoft Windows systems). This program is run as follows:
+    
     > ./nb-classify [options] -q <query-file> -m <model-file> -r <results-file>
   
 Required parameters:
@@ -92,6 +93,7 @@ Optional parameters:
   -v <integer>  Level of output information (default = 1).
 
 Typical usage:
+    
     > nb-classify -q test.fasta -m models.txt -r nb_results.txt
   
 You must have a directory named 'nb-temp-results' below the path of nb-classify.
@@ -100,6 +102,7 @@ You must have a directory named 'nb-temp-results' below the path of nb-classify.
 ### CLASSIFYING QUERY FRAGMENTS WITH BLASTN
 
 Classification with BLASTN is done using the script BLASTN.py as follows:
+    
     > python BLASTN.py <blastn-path> <query-file> <results-file>
 
 Required parameters:
@@ -108,6 +111,7 @@ Required parameters:
   <results-file>  File to write classification results to.
 
 Typical usage: 
+    
     > python BLASTN.py /path/to/blastn test.fasta blastn_results.txt
 
 
@@ -118,6 +122,7 @@ be run. NB must be run with the T parameter set to 0 so results are
 available for all models.
 
 NB-BL is run using the NB-BL.py script:
+    
     > python NB-BL.py <nb-results> <blastn-results> <results-file>
 
 Required parameters:
@@ -126,6 +131,7 @@ Required parameters:
   <results-file>    File to write classification results to.
 
 Typical usage:
+
     > ./nb-classify -q test.fasta -m models.txt -r nb_results.txt
     > python BLASTN.py /path/to/blastn test.fasta blastn_results.txt
     > python NB-BL.py nb_results.txt blastn_results.txt nb-bl_results.txt
@@ -138,6 +144,7 @@ be run. NB must be run with the T parameter set to 0 so results are
 available for all models.
 
 Epsilon-NB is run using the Epsilon-NB.py script:
+    
     > python Epsilon-NB.py <nb-results> <epsilon> <results-file>
   
 Required parameters:
@@ -147,6 +154,7 @@ Required parameters:
   <results-file>  File to write classification results to.
 
 Typical usage:
+
     > ./nb-classify -q test.fasta -m models.txt -r nb_results.txt
     > python Epsilon-NB.py nb_results.txt 1E10 epsilon-nb_results.txt
 
@@ -155,6 +163,7 @@ Typical usage:
 
 Classification with LCA requires the BLASTN classifiers to first 
 be run. LCA is run using the LCA.py script:
+
     > python LCA.py <blastn-results> <E-value> <percentage> <results-file>
   
 Required parameters:
@@ -165,6 +174,7 @@ Required parameters:
   <results-file>    File to write classification results to.
 
 Typical usage:
+
     > python BLASTN.py /path/to/blastn test.fasta blastn_results.txt
     > python LCA.py blastn_results.txt 1E-5 15 lca_results.txt
 
@@ -176,6 +186,7 @@ classifiers to first be run. NB must be run with the T parameter
 set to 0 so results are available for all models.
 
 LCA + Epsilon-NB is run using the LCA+Epsilon-NB.py script:
+
     > python LCA+Epsilon-NB.py <blastn-results> <nb-results> <E-value> <percentage> <epsilon> <results-file>
 
 Required parameters:
@@ -189,6 +200,7 @@ Required parameters:
   <results-file>    File to write classification results to.
 
 Typical usage:
+
     > ./nb-classify -q test.fasta -m models.txt -r nb_results.txt
     > python BLASTN.py /path/to/blastn test.fasta blastn_results.txt
     > python LCA+Epsilon-NB.py blastn_results.txt nb_results.txt 1E-5 15 1E10 lca+epsilon-nb_results.txt
@@ -201,6 +213,7 @@ BLAST + Epsilon-NB classifier is obtained by setting the percentage threshold to
 
 The script TaxonomicSummary.py can be used to summarize the number of fragments and base pairs
 assigned to different taxonomic categories: 
+
     > python TaxonomicSummary.py <query-file> <results-file> <summary-file>
 
 Required parameters:
@@ -214,6 +227,7 @@ the results file through Epsilon-NB.py with epsilon set to 0 or LCA.py with the 
 set to 0, respectively.
 
 Typical usage:
+
     > ./nb-classify -q test.fasta -m models.txt -r nb_results.txt
     > python Epsilon-NB.py nb_results.txt 0.0 nb_topModels.txt
     > python TaxonomicSummary.py test.fasta nb_topModels.txt nb_taxonomicSummary.txt
@@ -226,6 +240,7 @@ script AddModels.py (see below). If you wish to use the naive Bayes
 classified indepedent of FCP, see the example directory.
 
 To build a new model, run the script AddModel.py:
+
     > python AddModel.py <N> <sequence-file> <domain> <phylum> <class> <order> <family> <genus> <species> <strain>
 
 Required parameters:
@@ -236,6 +251,7 @@ Required parameters:
   <stain>          Strain of model.
 
 Typical usage:
+
     > python AddModel.py ./training/custom/MySeqData.fasta Bacteria Proteobacteria 
               Betaproteobacteria Burkholderiales Burkholderiaceae Ralstonia 
               "Ralstonia pickettii" "Ralstonia pickettii 12D"
@@ -247,6 +263,7 @@ your new model. You may wish to back these up before adding custom models. Alter
 you can edit the file models.txt to remove custom models from consideration.
 
 If you wish new models to be considered by BLASTN you must run BuildBlastDB.py:
+
     > python BuildBlastDB.py /path/to/makeblastdb ../training/sequences.txt
 
 This only needs to be run once after adding in a collection of new models.
@@ -256,6 +273,7 @@ This only needs to be run once after adding in a collection of new models.
  
 The length of n-mers being used can be changed using the nb-train executable
 in the nb-train directory (nb-train-windows.exe on Microsoft Windows systems):
+
     > ./nb-train [options] -s <sequence-file> -m <model-dir>
 
 Required parameters:
@@ -269,6 +287,7 @@ Optional parameters:
   -n <integer>  Desired oligonucleotide length (default = 10).
 
 Typical usage:
+
     > nb-train -s sequences.txt -m ./models/
 
 
