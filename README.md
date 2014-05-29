@@ -13,13 +13,7 @@ Classifying genomic fragments from novel lineages using composition and homology
   the command prompt to check if python is installed. Python, including
   a Windows installer, can be obtained from http://www.python.org/download/.
 * If you wish to run the NB-BL, LCA, LCA+NB, or LCA+e-NB scripts you will
-  need to have BLAST+ installed on your system. BLAST+ can be obtained from
-  the NCBI's FTP site:
- 
-    ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+
-
-  We recommend using the most recent release.
- 
+  need to have BLAST installed on your system. 
 
 ### INSTALLATION
 
