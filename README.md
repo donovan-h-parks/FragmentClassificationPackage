@@ -29,7 +29,7 @@ To install the Fragment Classification Package (FCP), run the FCP_install.py scr
 
 This script downloads all completely sequenced bacterial and
 archaeal genomes in the NCBI RefSeq database. Due to the size
-of this file (> 3.5GB) it can take over an hour to download.
+of this file (> 7.5GB) it can take over an hour to download.
 Taxonomic information is also obtained by downloading a portion
 of the NCBI Taxonomy database.
 
@@ -41,13 +41,13 @@ Naive Bayes model built for each genome.
 Installation takes around 2 hours, but does not require any 
 user interaction. Conservative times for each step are as follows:
 
-  1. Download NCBI RefSeq genomes: 1.5 hours
-  2. Decompress genomes: 6 min
+  1. Download NCBI RefSeq genomes: 3 hours
+  2. Decompress genomes: 15 min
   3. Downloading NCBI taxonomy database: 1 min
   4. Decompress NCBI taxonomy database: 1 min
   5. Build taxonomy file for genomes: 1 min
   6. Create input sequence file for each genome: 3 min
-  7. Build Naive Bayes models for each genomes: 15 min
+  7. Build Naive Bayes models for each genomes: 30 min
   
 If you wish to run the NB-BL, LCA, LCA+NB, or LCA+e-NB scripts,
 a BLAST database of all genomes must be built. This can be done
@@ -286,7 +286,7 @@ Optional parameters:
 
 Typical usage:
 
-    > nb-train -s sequences.txt -m ./models/
+    > ./nb-train -s sequences.txt -m ./models/
 
 
 ### HOW TO PARALLELIZE CLASSIFICATION
