@@ -35,7 +35,7 @@ struct Parameters
 
 void help()
 {
-	std::cout << "Naive Bayes Classification v1.0.4" << std::endl;
+	std::cout << "Naive Bayes Classification v1.0.5" << std::endl;
 	std::cout << std::endl;
 	std::cout << "  Usage: [options] -q <query-file> -m <model-file> -r <results-file>" << std::endl;
 	std::cout << std::endl;

@@ -34,7 +34,7 @@ struct Parameters
 
 void help()
 {
-	std::cout << "Naive Bayes Train v1.0.4" << std::endl;
+	std::cout << "Naive Bayes Train v1.0.5" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Usage: [options] -s <sequence-file> -m <model-dir>" << std::endl;
 	std::cout << std::endl;
@@ -46,7 +46,7 @@ void help()
 	std::cout << "  --help        Print help message." << std::endl;
 	std::cout << "  --version     Print version information." << std::endl;
 	std::cout << "  --contact     Print contact information." << std::endl;
-	std::cout << "  -n <integer>  Desired oligonucleotide length (default = 10)." << std::endl;
+	std::cout << "  -n <integer>  Desired oligonucleotide length (default = 8)." << std::endl;
 	std::cout << std::endl;
 	std::cout << "Typical usage:" << std::endl;
 	std::cout << "  nb-train -s sequences.txt -m ./models/"  << std::endl << std::endl;
