@@ -35,7 +35,7 @@ struct Parameters
 
 void help()
 {
-	std::cout << "Naive Bayes Classification v1.0.4" << std::endl;
+	std::cout << "Naive Bayes Classification v1.0.5" << std::endl;
 	std::cout << std::endl;
 	std::cout << "  Usage: [options] -q <query-file> -m <model-file> -r <results-file>" << std::endl;
 	std::cout << std::endl;
@@ -156,7 +156,7 @@ int main(int argc, char* argv[])
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "Naive Bayes Classify v1.0.4 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Classify v1.0.5 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
@@ -224,7 +224,7 @@ int main(int argc, char* argv[])
 
 		// get k-mers for each query fragment
 		if(parameters.verbose >= 1)
-			std::cout << "  Calculating n-mers in query fragment: ";	
+			std::cout << "  Calculating n-mers in query fragment: " << std::endl;	
 
 		std::vector< std::vector<uint> > queryKmerProfiles;
 		queryKmerProfiles.reserve(parameters.batchSize);
@@ -246,7 +246,7 @@ int main(int argc, char* argv[])
 
 		// apply each model to each query sequence
 		if(parameters.verbose >= 1)
-			std::cout << "  Applying models to query sequences: ";
+			std::cout << "  Applying models to query sequences: " << std::endl;
 
 		std::ifstream modelStream(parameters.modelFile.c_str(), std::ios::in);
 

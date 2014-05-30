@@ -233,6 +233,6 @@ void KmerModel::read(const std::string& filename)
 void KmerModel::printModelInfo(std::ostream& out) const
 {
 	out << "Model name: " << m_modelInfo.name << std::endl;
-	out << "Moden taxonomy: " << m_modelInfo.taxonomy.taxonomyStr() << std::endl;
+	out << "Model taxonomy: " << m_modelInfo.taxonomy.taxonomyStr() << std::endl;
 	out << "N-mer length: " << m_wordLength << std::endl;
 }

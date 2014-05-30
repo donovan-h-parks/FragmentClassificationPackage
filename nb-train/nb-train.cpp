@@ -177,6 +177,8 @@ int main(int argc, char* argv[])
 			if(!bNextSeq)
 				break;
 
+			seqInfo.taxonomy.strain = modelName;
+
 			bOK = kmerModel.constructModel(seqInfo);
 			if(!bOK)
 			{

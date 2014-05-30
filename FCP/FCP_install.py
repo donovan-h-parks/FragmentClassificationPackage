@@ -356,7 +356,7 @@ def BuildNaiveBayesModels():
 	# build stain-level models
 	if platform.system() == 'Windows':
 		print 'Building genome-level models...'
-		os.system('nb-train-windows.exe -n 10 -s ./training/sequences.txt -m ./models/genomes/')
+		os.system('nb-train-windows.exe -n 8 -s ./training/sequences.txt -m ./models/genomes/')
 	else: # assume the system can build the executable from source
 		print 'Compiling nb-train...'
 		os.chdir('./nb-train-src')
@@ -371,7 +371,7 @@ def BuildNaiveBayesModels():
 		os.system('cp ./nb-classify-src/nb-classify .')
 		
 		print 'Building genome-level models...'
-		os.system('./nb-train -n 10 -s ./training/sequences.txt -m ./models/genomes/')
+		os.system('./nb-train -n 8 -s ./training/sequences.txt -m ./models/genomes/')
 
 	# create model file for classifying query fragments
 	modelFile = open('./models/models.txt', 'w')

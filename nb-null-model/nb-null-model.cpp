@@ -44,7 +44,7 @@ void help()
 	std::cout << "  --help        Print help message." << std::endl;
 	std::cout << "  --version     Print version information." << std::endl;
 	std::cout << "  --contact     Print contact information." << std::endl;
-	std::cout << "  -n <integer>  Desired oligonucleotide length (default = 10)." << std::endl;
+	std::cout << "  -n <integer>  Desired oligonucleotide length (default = 8)." << std::endl;
 	std::cout << std::endl;
 	std::cout << "Typical usage:" << std::endl;
 	std::cout << "  nb-null-model -s sequences.fna -m null_model.txt"  << std::endl << std::endl;
@@ -56,7 +56,7 @@ bool parseCommandLine(int argc, char* argv[], Parameters& parameters)
 	parameters.bShowHelp = false;
 	parameters.bShowContactInfo = false;
 	parameters.bShowVersion = false;
-	parameters.kmerSize = 10;
+	parameters.kmerSize = 8;
 
 	// parse parameters
 	int p = 1;
