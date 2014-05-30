@@ -58,22 +58,20 @@ for line in  fileinput.input(['taxonomy.txt']):
 print 'Determing hits for each query fragment...'
 fragmentHits = {}
 for line in  fileinput.input([blastnResults]):
-	if '# Query:' in line:
-		fragmentId = line[line.rfind(' '):]
-		fragmentHits[fragmentId.strip()] = [[0, ['unclassified']*8]]
-		continue
-		
 	if line[0] == '#':
 		continue
 		
 	lineSplit = line.split('\t')
-	fragmentId = lineSplit[0]
+	fragmentId = lineSplit[0].
 	accession = lineSplit[1]
 	evalue = float(lineSplit[10])
 	bitscore = float(lineSplit[11])
-	
+		
 	if evalue > eValueThreshold:
 		continue
+		
+	if fragmentId not in fragmentHits:
+		fragmentHits[fragmentId] = [[0, ['unclassified']*8]]
 	
 	fragmentHits[fragmentId].append([bitscore, list(accessionToTaxonomy[accession])])
 
