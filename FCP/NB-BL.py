@@ -25,15 +25,15 @@ import fileinput
 import math
 
 if len(sys.argv) != 4:
-	print 'NB-BL v1.1 by Donovan Parks, Norm MacDonald, and Rob Beiko'
+	print 'NB-BL v1.2 by Donovan Parks, Norm MacDonald, and Rob Beiko'
 	print '           with optimizations by Jose R Valverde (CNB/CSIC)'
 	print ''
 	print 'Usage: python NB-BL.py <nb-results> <blastn-results> <results-file>'
 	print ''
 	print 'Required parameters:'
-	print '  <blastn-path>   Results of NB classifier with T=0.'
-	print '  <query-file>    Results of BLASTN classifier.'
-	print '  <results-file>  File to write classification results to.'
+	print '  <nb-results>      Results of NB classifier with T=0.'
+	print '  <blastn-results>  Results of BLASTN classifier.'
+	print '  <results-file>    File to write classification results to.'
 	print ''
 	print 'Typical usage:'
 	print '  python NB-BL.py nb_results.txt blastn_results.txt nb-bl_results.txt'
@@ -221,7 +221,6 @@ except:
 #	could get rid of comments in blast since we need not worry about
 #	them.
 for line in nb:
-
 	lineSplit = line.split('\t')
 	
 	# The first line is special: it contains the header
@@ -233,7 +232,7 @@ for line in nb:
 		bHeaderLine = False
 		continue
 	
-	# we expect each line to correspong to a different fragmentId
+	# we expect each line to correspond to a different fragmentId
 	fragmentId = lineSplit[0]
 	
 	# obtain likelihoods (they are all in the same line)
@@ -280,9 +279,6 @@ for line in nb:
 	fout.write(fragmentId + '\t')
 	for r in xrange(0, 8):
 		fout.write(topTaxonomy[r] + ';')
-		fout.write("\t")
-		for r in xrange(0, 8):
-			fout.write("%f;"%(topScore))
 	fout.write('\n')
 	
 nb.close()
