@@ -23,7 +23,7 @@ import fileinput
 import math
 
 if len(sys.argv) != 7:
-	print 'LCA+Epsilon-NB v1.0.2 by Donovan Parks, Norm MacDonald, and Rob Beiko'
+	print 'LCA+Epsilon-NB v1.0.3 by Donovan Parks, Norm MacDonald, and Rob Beiko'
 	print ''
 	print 'Usage: python LCA+Epsilon-NB.py <blastn-results> <nb-results> <E-value> <percentage> <epsilon> <results-file>'
 	print ''
@@ -153,10 +153,15 @@ print 'Calculating LCA + Epsilon-NB classification...'
 topTaxonomies = {}
 for fragmentId in nbTopTaxonomies:
 	topTaxonomy = nbTopTaxonomies[fragmentId]
-	blastnTaxonomy = blastnTopTaxonomies[fragmentId]
 	
-	for r in xrange(0, 8):
-		if topTaxonomy[r] != blastnTaxonomy[r]:
+	if fragmentId in blastnTopTaxonomies:
+		blastnTaxonomy = blastnTopTaxonomies[fragmentId]
+		
+		for r in xrange(0, 8):
+			if topTaxonomy[r] != blastnTaxonomy[r]:
+				topTaxonomy[r] = 'unclassified'
+	else:
+		for r in xrange(0, 8):
 			topTaxonomy[r] = 'unclassified'
 	
 	topTaxonomies[fragmentId] = topTaxonomy
