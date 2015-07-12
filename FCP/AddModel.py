@@ -21,8 +21,8 @@ import os
 import fileinput
 import platform
 
-if len(sys.argv) != 10:
-	print 'AddModel v1.0 by Donovan Parks, Norm MacDonald, and Rob Beiko'
+if len(sys.argv) != 11:
+	print 'AddModel v1.0.1 by Donovan Parks, Norm MacDonald, and Rob Beiko'
 	print ''
 	print 'Usage: python AddModel.py <N> <sequence-file> <domain> <phylum> <class> <order> <family> <genus> <species> <strain>'
 	print ''
@@ -34,21 +34,22 @@ if len(sys.argv) != 10:
 	print '  <stain>          Strain of model.'
 	print ''
 	print 'Typical usage:'
-	print '  python AddModel.py ./training/custom/MySeqData.fasta Bacteria Proteobacteria'
+	print '  python AddModel.py 8 ./training/custom/MySeqData.fasta Bacteria Proteobacteria'
 	print '            Betaproteobacteria Burkholderiales Burkholderiaceae Ralstonia '
 	print '            "Ralstonia pickettii" "Ralstonia pickettii 12D"'
 	print ''
 	exit()
 
-fastaFile = sys.argv[1]
-domain = sys.argv[2]
-phylum = sys.argv[3]
-classRank = sys.argv[4]
-order = sys.argv[5]
-family = sys.argv[6]
-genus = sys.argv[7]
-species = sys.argv[8]
-strain = sys.argv[9]
+N = sys.argv[1]
+fastaFile = sys.argv[2]
+domain = sys.argv[3]
+phylum = sys.argv[4]
+classRank = sys.argv[5]
+order = sys.argv[6]
+family = sys.argv[7]
+genus = sys.argv[8]
+species = sys.argv[9]
+strain = sys.argv[10]
 
 taxonomy = [domain, phylum, classRank, order, family, genus, species, strain]
 
@@ -76,20 +77,19 @@ fout = open('./training/sequences.txt', 'a')
 fout.write('.' + fastaFile + '\n')
 fout.close()
 
-# write tempory sequence file
+# write temporary sequence file
 fout = open('./training/__temp__.txt', 'w')
-fout.write('.' + fastaFile + '\n')
+fout.write(fastaFile + '\n')
 fout.close()
 
 # build new model
 print 'Building model for new sequence...'
-if platform.system() == 'Windows':	
-	os.system('nb-train-windows.exe 10 -s ./training/__temp__.txt -m ./models/genomes/')
+if platform.system() == 'Windows':
+	os.system('nb-train-windows.exe -n %s -s ./training/__temp__.txt -m ./models/genomes/' % N)
 else: # assume the system can build the executable from source
-	os.system('./nb-train 10 -s ./training/__temp__.txt -m ./models/genomes/')
+	os.system('./nb-train -n %s -s ./training/__temp__.txt -m ./models/genomes/' % N)
 	
 # removing temporary sequence file
-os.chdir('..')
 os.remove('./training/__temp__.txt')
 
 # add new model to model file

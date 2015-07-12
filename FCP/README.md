@@ -229,7 +229,7 @@ Typical usage:
 
 New models can be added to those built during the FCP install using the
 script AddModels.py (see below). If you wish to use the naive Bayes 
-classified indepedent of FCP, see the example directory.
+classified independent of FCP, see the example directory.
 
 To build a new model, run the script AddModel.py:
 
@@ -244,11 +244,14 @@ Required parameters:
 
 Typical usage:
 
-    > python AddModel.py ./training/custom/MySeqData.fasta Bacteria Proteobacteria 
+    > python AddModel.py 8 ./training/custom/MySeqData.fasta Bacteria Proteobacteria 
               Betaproteobacteria Burkholderiales Burkholderiaceae Ralstonia 
               "Ralstonia pickettii" "Ralstonia pickettii 12D"
 
 (should be specified on a single line)
+
+This script assumes the current working directory is the root FCP directory
+(i.e., ./training should be the directory with all current models).
 
 Note that this will modify the files sequences.txt, taxonomy.txt and models.txt to include
 your new model. You may wish to back these up before adding custom models. Alternatively,

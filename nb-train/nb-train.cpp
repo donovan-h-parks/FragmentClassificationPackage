@@ -34,7 +34,7 @@ struct Parameters
 
 void help()
 {
-	std::cout << "Naive Bayes Train v1.0.5" << std::endl;
+	std::cout << "Naive Bayes Train v1.0.7" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Usage: [options] -s <sequence-file> -m <model-dir>" << std::endl;
 	std::cout << std::endl;
@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
   }
 	else if(parameters.bShowVersion)
 	{
-		std::cout << "Naive Bayes Train v1.0.5 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
+		std::cout << "Naive Bayes Train v1.0.7 by Donovan Parks, Norm MacDonald, and Rob Beiko." << std::endl;
 		return 0;
 	}
 	else if(parameters.bShowContactInfo)
